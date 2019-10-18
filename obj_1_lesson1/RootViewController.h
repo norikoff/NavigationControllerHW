@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  obj_1_lesson1
 //
 //  Created by 16817252 on 14/10/2019.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UINavigationControllerDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-- (void)tapButton;
+@interface RootViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

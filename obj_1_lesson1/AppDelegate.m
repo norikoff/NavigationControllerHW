@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "RootViewController.h"
+#import "ViewController.h"
+#import "NavViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +19,36 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+	
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//	self.window.rootViewController = [[RootViewController alloc] init];
+//	self.window.backgroundColor = [UIColor redColor];
+	//self.window = window;
+	
+//	RootViewController *rootViewController = [RootViewController new];
+//	self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+	
+	RootViewController *rootViewController = [RootViewController new];
+	UINavigationController *navViewController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+//    NavViewController *navDelegate = [NavViewController new];
+//    navViewController.delegate = navDelegate;
+	
+	ViewController *viewController = [ViewController new];
+	
+	
+	UITabBarItem *item1 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks
+																	 tag:1];
+	navViewController.tabBarItem = item1;
+	
+	UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch
+																	 tag:2];
+	viewController.tabBarItem = item2;
+	
+	UITabBarController *tabBar = [[UITabBarController alloc] init];
+	
+	tabBar.viewControllers = @[navViewController, viewController];
+	self.window.rootViewController = tabBar;
+	[self.window makeKeyAndVisible];
 	return YES;
 }
 
